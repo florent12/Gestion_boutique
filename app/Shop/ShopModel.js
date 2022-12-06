@@ -1,5 +1,5 @@
-import { getAll, save, getWithid } from "./ShopRepositoryModel.js"
-//import { getWithid } from "./ShopRepositoryModel.js"
+import { getAll, save, getWithid, updateShop, deleteShop,saveArticle} from "./ShopRepositoryModel.js"
+
 export class Shop {
     id
     articles
@@ -15,8 +15,11 @@ export class Shop {
         this.nomDuProprietaire = nomDuProprietaire
     }
 
+
+
      getAllServices(){
         return  getAll()
+        
     }
 
 
@@ -26,14 +29,24 @@ export class Shop {
 
     }
 
-    getOneService(){
-        return getWithid()
-    }
+   
 
 
-    getOneService(){
-        return getWithid()
+   
+
+    ShopUpdate(idShop, data){
+        return updateShop(idShop, data)
+        
     }
+
+    ShopDelete(idShop){
+        return deleteShop(idShop)
+    }
+
+    getOneService(id){
+        return getWithid(id)
+    }
+
 
  
  
@@ -55,3 +68,25 @@ export class Shop {
      this.articles.forEach((element,index) => console.log(element));
     }
  }
+ export class Article {
+    id
+    designation
+    prix
+    quantite
+    categorie
+
+    constructor(id,designation,prix,quantite,categorie) {
+        this.id = id
+        this.designation = designation
+        this.prix = prix
+        this.quantite = quantite
+        this.categorie = categorie
+    }
+
+    addArticle = (article, idBoutique) => {
+
+        return saveArticle(article,idBoutique)
+   
+       }
+
+}

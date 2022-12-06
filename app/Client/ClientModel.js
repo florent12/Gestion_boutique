@@ -1,3 +1,5 @@
+import { getAll, save, getWithid, updateClient, deleteClient } from "./ClientRepositoryModel.js"
+
 export class Client {
     id
     nom
@@ -12,6 +14,32 @@ export class Client {
         this.email = email
         this.adresse = adresse
     
+    }
+
+    getAllClients(){
+        return  getAll()
+        
+    }
+
+    getOneService(id){
+        return getWithid(id)
+    }
+
+
+    addClient =(client) => {
+
+     save(client)
+
+    }
+
+   
+    ClientUpdate(idClient, data){
+        return updateClient(idClient, data)
+        
+    }
+
+    ClientDelete(idClient){
+        return deleteClient(idClient)
     }
    
     //new Client('1', 'ATAKORA', 'florent',' florent@gmail.com','paris' )

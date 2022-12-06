@@ -1,3 +1,4 @@
+/*import { saveArticle } from "../Shop/ShopRepositoryModel"
 export class Article {
     id
     designation
@@ -13,7 +14,10 @@ export class Article {
         this.categorie = categorie
     }
 
-    addArticle(Article){
-        this.Article = Article
-    }
-}
+    addArticle = (article, idBoutique) => {
+
+        return saveArticle(article,idBoutique)
+   
+       }
+
+}*/

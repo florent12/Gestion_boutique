@@ -1,6 +1,7 @@
 import express  from 'express';
 import mongoose from 'mongoose';
-import { router } from './app/Shop/ShopApi.js';
+import { routerShop } from './app/Shop/ShopApi.js';
+import { routerClient } from './app/Client/ClientApi.js';
 import BodyParser from 'body-parser';
 export const app = express();
 
@@ -13,14 +14,15 @@ app.use(BodyParser.json());
 app.use(BodyParser.urlencoded({extended: true}));
 
 
-app.use('/boutiques',router)
+app.use('/boutiques',routerShop)
+app.use('/clients', routerClient)
 
 export const db = mongoose.connection
 
 db.on("error", console.error.bind(console, "MongoDB connection error"));
 
 
-app.use('/boutiques', router)
+
 
 /*app.use((req, res, next) => {
   console.log('Requête reçue !');
